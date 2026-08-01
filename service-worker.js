@@ -1,5 +1,5 @@
 
-const CACHE_VERSION = "333-333-network-pwa-v1";
+const CACHE_VERSION = "333-333-network-pwa-v2";
 const STATIC_CACHE = `${CACHE_VERSION}-static`;
 const RUNTIME_CACHE = `${CACHE_VERSION}-runtime`;
 
@@ -12,6 +12,7 @@ const APP_SHELL = [
   "./assets/icons/icon-192.png",
   "./assets/icons/icon-512.png",
   "./assets/icons/icon-maskable-512.png"
+  "./register-service-worker.js",
 ];
 
 self.addEventListener("install", event => {
