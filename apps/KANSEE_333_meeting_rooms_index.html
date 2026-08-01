@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="KANSEE™ — a local-first 333 Network workspace for private meeting rooms, trusted invitations, room chat, participant management, and consent-based media preview.">
+  <meta name="description" content="KANSEE™ 333 Meeting Rooms — a local-first, backend-ready collaboration platform for private rooms, conversation links, social invitations, casting, chat, participant management, and consent-based media preview.">
   <meta name="theme-color" content="#0d1325">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; img-src 'self' data: blob:; media-src 'self' data: blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; script-src 'unsafe-inline'; connect-src 'self' ws: wss:; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
   <title>KANSEE™ — 333 Meeting Rooms</title>
@@ -713,6 +713,194 @@
       .control-btn{font-size:9px}
     }
 
+  
+    /* =========================================================
+       KANSEE 333 — executive collaboration refinement
+       ========================================================= */
+    :root{
+      --r1:7px;
+      --r2:7px;
+      --r3:21px;
+    }
+
+    body{
+      text-align:center;
+      font-weight:400;
+    }
+
+    .hero{
+      max-width:1221px;
+      grid-template-columns:1fr;
+      justify-items:center;
+      text-align:center;
+      padding:44px 22px 28px;
+    }
+
+    .hero > div:first-child{max-width:900px}
+    .hero-copy{margin-left:auto;margin-right:auto}
+    .service-number{
+      width:min(100%,333px);
+      margin:auto;
+      border-radius:21px;
+    }
+
+    .topline-inner,
+    .status-strip,
+    .kansee-readiness,
+    .mobile-tabs,
+    .app-shell,
+    footer{
+      max-width:1221px;
+    }
+
+    .network-links a,
+    .small-btn,.primary-btn,.danger-btn,.quiet-btn,.icon-btn,.control-btn,
+    input,textarea,select,
+    .meeting-card,.room-banner,.video-tile,.video-label,
+    .participant,.chat-log,.chat-message,.info-card,.note,
+    .modal,.toast,.pill{
+      border-radius:7px;
+    }
+
+    .panel{
+      border-radius:21px;
+    }
+
+    .status-card{
+      justify-content:center;
+      text-align:center;
+      gap:14px 22px;
+    }
+
+    .status-actions{
+      justify-content:center;
+    }
+
+    .kansee-readiness{
+      margin:0 auto 16px;
+      padding:0 22px;
+    }
+
+    .kansee-readiness-inner{
+      display:grid;
+      grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);
+      gap:22px;
+      align-items:center;
+      padding:22px;
+      border:1px solid var(--line);
+      border-radius:21px;
+      background:rgba(255,255,255,.78);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(12px);
+    }
+
+    .readiness-copy{text-align:left}
+
+    .readiness-kicker{
+      margin:0 0 7px;
+      color:var(--teal);
+      font-family:var(--font-brand);
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    .kansee-readiness h2{
+      margin:0;
+      font-size:clamp(24px,3vw,36px);
+      line-height:1.05;
+    }
+
+    .kansee-readiness p:not(.readiness-kicker){
+      margin:11px 0 0;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.7;
+    }
+
+    .readiness-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:7px;
+    }
+
+    .readiness-grid div{
+      min-height:88px;
+      display:grid;
+      align-content:center;
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius:7px;
+      background:#fffdf8;
+    }
+
+    .readiness-grid strong{
+      color:var(--teal);
+      font-family:var(--font-brand);
+      font-size:10px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .readiness-grid span{
+      margin-top:5px;
+      color:var(--ink-soft);
+      font-size:10px;
+      line-height:1.4;
+    }
+
+    .app-shell{
+      grid-template-columns:275px minmax(430px,1fr) 360px;
+    }
+
+    .panel-head,
+    .room-banner,
+    .meeting-card,
+    .participant,
+    .chat-message,
+    .info-card{
+      text-align:left;
+    }
+
+    .collab-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:7px;
+      margin-top:9px;
+    }
+
+    .collab-tool{
+      min-height:40px;
+      border:1px solid var(--line);
+      border-radius:7px;
+      color:var(--night);
+      background:#fffaf2;
+      font-family:var(--font-ui);
+      font-size:10px;
+      font-weight:650;
+    }
+
+    .collab-tool:hover{
+      background:#edf4f2;
+      border-color:var(--teal);
+    }
+
+    @media(max-width:1180px){
+      .app-shell{grid-template-columns:260px minmax(400px,1fr)}
+    }
+
+    @media(max-width:900px){
+      .kansee-readiness-inner{grid-template-columns:1fr}
+      .readiness-copy{text-align:center}
+    }
+
+    @media(max-width:560px){
+      .kansee-readiness{padding-left:12px;padding-right:12px}
+      .readiness-grid{grid-template-columns:1fr}
+      .collab-grid{grid-template-columns:1fr}
+    }
+
   </style>
 </head>
 <body>
@@ -720,14 +908,14 @@
     <div class="topline-inner">
       <nav class="crumbs" aria-label="Breadcrumb">
         <a href="https://vervenveda.github.io/">Verve N Veda</a><span aria-hidden="true">›</span>
-        <a href="https://vervenveda.github.io/proresource_hub.github.io/">ProReSources</a><span aria-hidden="true">›</span>
-        <a href="333_network/333_Network_index.html">333 Network</a><span aria-hidden="true">›</span>
+        <a href="https://vervenveda.github.io/333.github.io/">333 Network</a><span aria-hidden="true">›</span>
         <span>KANSEE</span>
       </nav>
       <nav class="network-links" aria-label="333 Network services">
-        <a href="HOLLO™ 333 Direct Connect_index.html">HOLLO Direct Connect</a>
-        <a href="Bazaar Art Live 333 Social Feedindex.html">Bazaar Art Live</a>
-        <a href="333_network/333_Network_index.html">333 Network</a>
+        <a href="https://vervenveda.github.io/333.github.io/">333 Network Home</a>
+        <a href="https://vervenveda.github.io/proresource_hub.github.io/Protools/HOLLO%E2%84%A2%20333%20Direct%20Connect_index.html">HOLLO Direct Connect</a>
+        <a href="https://vervenveda.github.io/proresource_hub.github.io/Protools/Bazaar%20Art%20Live%20333%20Social%20Feed_index.html">Bazaar Art Live</a>
+        <a href="https://vervenveda.github.io/proresource_hub.github.io/">ProResource Hub</a>
       </nav>
     </div>
   </div>
@@ -736,7 +924,7 @@
     <div>
       <p class="eyebrow">333 Network · Private Meeting Rooms</p>
       <h1>KANSEE™</h1>
-      <p class="hero-copy">Create a private meeting room, invite trusted people, manage a waiting room, exchange room messages, and preview your camera, microphone, or screen only when you choose. KANSEE keeps the meeting workflow calm and understandable.</p>
+      <p class="hero-copy">Create a private room, invite trusted participants, manage a reception lobby, exchange messages, present to the room, and share a secure conversation link. KANSEE keeps collaboration calm, clear, and under the host’s control.</p>
     </div>
     <div class="service-number" aria-label="KANSEE network number">
       <small>Internal KANSEE Route</small>
@@ -747,10 +935,32 @@
 
   <section class="status-strip" aria-label="Network status">
     <div class="status-card" id="networkStatusCard">
-      <div><span class="status-dot"></span><strong id="networkStatusTitle">Local meeting preview</strong> <span id="networkStatusText">Rooms, local camera and microphone preview, chat, waiting-room demonstrations, and backups work on this device. Real participants on other devices require connected KANSEE services.</span></div>
+      <div><span class="status-dot"></span><strong id="networkStatusTitle">Local meeting preview</strong> <span id="networkStatusText">Rooms, local media preview, chat, lobby demonstrations, invitations, shared links, and backups persist on this device. Real participants, cross-device synchronization, casting, and live delivery require connected KANSEE services.</span></div>
       <div class="status-actions">
         <button class="quiet-btn" id="openProfileBtn" type="button">My Meeting Profile</button>
         <button class="quiet-btn" id="openSettingsBtn" type="button">Connection Settings</button>
+      </div>
+    </div>
+  </section>
+
+
+  <section class="kansee-readiness" aria-labelledby="kanseeReadinessTitle">
+    <div class="kansee-readiness-inner">
+      <div class="readiness-copy">
+        <p class="readiness-kicker">Conversation Continuity</p>
+        <h2 id="kanseeReadinessTitle">Every room can become a lasting collaborative space.</h2>
+        <p>
+          KANSEE currently preserves rooms, schedules, participants, invitations, chat,
+          notes, and history in this browser. The application is prepared for authenticated
+          accounts, permanent room links, social sharing, casting, synchronized files,
+          agendas, polls, minutes, transcripts, and cross-device continuity.
+        </p>
+      </div>
+      <div class="readiness-grid" aria-label="KANSEE capability status">
+        <div><strong>Active</strong><span>Local rooms and history</span></div>
+        <div><strong>Active</strong><span>JSON backup and restore</span></div>
+        <div><strong>Prepared</strong><span>Permanent conversation links</span></div>
+        <div><strong>Prepared</strong><span>Secure cloud synchronization</span></div>
       </div>
     </div>
   </section>
@@ -818,13 +1028,14 @@
         <button class="small-btn active" type="button" data-side-tab="people" role="tab" aria-selected="true">People</button>
         <button class="small-btn" type="button" data-side-tab="chat" role="tab" aria-selected="false">Chat</button>
         <button class="small-btn" type="button" data-side-tab="invite" role="tab" aria-selected="false">Invite</button>
+        <button class="small-btn" type="button" data-side-tab="collab" role="tab" aria-selected="false">Collaborate</button>
         <button class="small-btn" type="button" data-side-tab="details" role="tab" aria-selected="false">Details</button>
       </div>
       <div class="panel-body">
         <section class="side-pane active" id="sidePeople" data-side-pane="people">
           <div class="section-label">In the room</div>
           <div class="participant-list" id="participantList"></div>
-          <div class="section-label">Waiting room</div>
+          <div class="section-label">Reception Lobby</div>
           <div class="waiting-list" id="waitingList"></div>
         </section>
 
@@ -845,6 +1056,46 @@
           </div>
           <div class="section-label">Prepared invitations on this device</div>
           <div class="history-list" id="inviteHistoryList"></div>
+        </section>
+
+
+        <section class="side-pane" id="sideCollab" data-side-pane="collab">
+          <div class="info-card">
+            <h3>Share this conversation</h3>
+            <p>Create a reusable room link, copy an invitation, or open the device sharing menu.</p>
+            <div class="button-row" style="margin-top:8px">
+              <button class="primary-btn" id="copyConversationLinkBtn" type="button">Copy Conversation Link</button>
+              <button class="small-btn" id="nativeShareBtn" type="button">Share to Apps</button>
+              <button class="small-btn" id="copySocialTextBtn" type="button">Copy Social Invite</button>
+            </div>
+          </div>
+
+          <div class="info-card">
+            <h3>Present & Cast</h3>
+            <p>Share your screen now, or use browser and device casting controls for supported displays.</p>
+            <div class="button-row" style="margin-top:8px">
+              <button class="primary-btn" id="startPresentBtn" type="button">Present to Meeting</button>
+              <button class="small-btn" id="castHelpBtn" type="button">Casting Options</button>
+            </div>
+            <p class="note" style="margin-top:9px">
+              Browser casting support varies. Chromecast, AirPlay, smart-TV mirroring,
+              wireless display, and HDMI are controlled by the browser or operating system.
+            </p>
+          </div>
+
+          <div class="info-card">
+            <h3>Conversation Continuity</h3>
+            <div class="collab-grid">
+              <button class="collab-tool" type="button" data-collab-tool="Agenda">Agenda</button>
+              <button class="collab-tool" type="button" data-collab-tool="Shared Notes">Shared Notes</button>
+              <button class="collab-tool" type="button" data-collab-tool="Polls">Polls</button>
+              <button class="collab-tool" type="button" data-collab-tool="Tasks">Tasks</button>
+              <button class="collab-tool" type="button" data-collab-tool="Files">Shared Files</button>
+              <button class="collab-tool" type="button" data-collab-tool="Minutes">Minutes</button>
+              <button class="collab-tool" type="button" data-collab-tool="Transcript">Transcript</button>
+              <button class="collab-tool" type="button" data-collab-tool="Follow-Up">Follow-Up</button>
+            </div>
+          </div>
         </section>
 
         <section class="side-pane" id="sideDetails" data-side-pane="details">
@@ -869,9 +1120,9 @@
   </main>
 
   <footer>
-    <strong>KANSEE™ · 333 Meeting Rooms at ProReSources</strong><br>
+    <strong>KANSEE™ · 333 Meeting Rooms</strong><br>
     Verve N Veda · Khaemenes Academy · Jennifer Kay Pearl · All Rights Reserved 2026<br>
-    Rooms and media previews remain local to this browser until connected KANSEE services are configured.
+    Rooms, links, invitations, collaboration notes, and media previews remain local to this browser until authenticated KANSEE services are configured.
   </footer>
 
   <div class="modal-backdrop" id="meetingModalBackdrop" aria-hidden="true">
@@ -879,6 +1130,20 @@
       <h2 id="meetingModalTitle">Create a KANSEE meeting</h2>
       <p class="lead">Create an instant room or schedule one for later. The room stays in this browser until exported or connected to a future KANSEE account service.</p>
       <form id="meetingForm">
+        <div class="field">
+          <label for="meetingTypeInput">Room type</label>
+          <select id="meetingTypeInput">
+            <option value="meeting">Meeting</option>
+            <option value="classroom">Classroom</option>
+            <option value="workshop">Workshop</option>
+            <option value="webinar">Webinar</option>
+            <option value="family">Family Circle</option>
+            <option value="council">Council Session</option>
+            <option value="interview">Interview</option>
+            <option value="office">Office Hours</option>
+            <option value="study">Study Hall</option>
+          </select>
+        </div>
         <div class="field"><label for="meetingTitleInput">Meeting title</label><input id="meetingTitleInput" type="text" maxlength="120" required placeholder="Community planning session"></div>
         <div class="form-row">
           <div class="field"><label for="meetingDateInput">Date</label><input id="meetingDateInput" type="date"></div>
@@ -886,9 +1151,9 @@
         </div>
         <div class="form-row">
           <div class="field"><label for="meetingDurationInput">Duration</label><select id="meetingDurationInput"><option value="30">30 minutes</option><option value="45">45 minutes</option><option value="60" selected>1 hour</option><option value="90">90 minutes</option><option value="120">2 hours</option></select></div>
-          <div class="field"><label for="meetingAccessInput">Access</label><select id="meetingAccessInput"><option value="invite">Invite only</option><option value="waiting">Room code + waiting room</option><option value="trusted">Trusted contacts</option></select></div>
+          <div class="field"><label for="meetingAccessInput">Access</label><select id="meetingAccessInput"><option value="invite">Invite only</option><option value="waiting">Room code + reception lobby</option><option value="trusted">Trusted contacts</option></select></div>
         </div>
-        <div class="field"><label><input id="meetingWaitingInput" type="checkbox" checked style="width:auto;margin-right:6px">Use waiting room</label></div>
+        <div class="field"><label><input id="meetingWaitingInput" type="checkbox" checked style="width:auto;margin-right:6px">Use reception lobby</label></div>
         <div class="field"><label><input id="meetingMuteInput" type="checkbox" checked style="width:auto;margin-right:6px">Mute guests when admitted</label></div>
         <div class="modal-actions">
           <button class="quiet-btn" id="cancelMeetingBtn" type="button">Cancel</button>
@@ -940,6 +1205,51 @@
   <script>
   (function(){
     'use strict';
+
+    /*
+      KANSEE PRODUCTION SERVICE BOUNDARY
+      ----------------------------------
+      The public build remains local-first. Production persistence should add:
+      - shared 333 authentication and verified member identity
+      - permanent room records and signed invitation links
+      - encrypted database storage with room-level permissions
+      - WebSocket signaling for live invitations and room state
+      - an SFU/media server for scalable group video
+      - TURN/STUN services for reliable WebRTC connectivity
+      - object storage for files and recordings
+      - transcript, minutes, agenda, polling, and task services
+      - moderation, audit, blocking, reporting, and rate limiting
+      - sync revisions and conflict handling across devices
+
+      Do not place credentials or secrets in this HTML file.
+    */
+    const KANSEE_SERVICE = Object.freeze({
+      mode:'local',
+      apiBase:'',
+      websocketUrl:'',
+      mediaServerUrl:'',
+      syncEnabled:false
+    });
+
+    const KanseeService = Object.freeze({
+      async createPermanentRoom(_room){
+        if(KANSEE_SERVICE.mode!=='remote') return {ok:false,reason:'local-mode'};
+        throw new Error('Permanent room service is not configured.');
+      },
+      async syncWorkspace(_workspace){
+        if(KANSEE_SERVICE.mode!=='remote') return {ok:false,reason:'local-mode'};
+        throw new Error('Workspace synchronization is not configured.');
+      },
+      async sendInvitation(_invite){
+        if(KANSEE_SERVICE.mode!=='remote') return {ok:false,reason:'local-mode'};
+        throw new Error('Invitation delivery is not configured.');
+      },
+      async joinRoom(_roomCode){
+        if(KANSEE_SERVICE.mode!=='remote') return {ok:false,reason:'local-mode'};
+        throw new Error('Live room service is not configured.');
+      }
+    });
+
     const STORAGE_KEY='kansee_333_workspace_v1';
     const BUILD='KANSEE-333-2026.07';
     const $=s=>document.querySelector(s);
@@ -956,7 +1266,9 @@
       meetings:[],
       currentRoomId:null,
       history:[],
-      inviteHistory:[]
+      inviteHistory:[],
+      continuity:{},
+      sync:{mode:'local',lastSyncedAt:null,revision:1}
     };
 
     let memoryState=null;
@@ -977,12 +1289,16 @@
       s.settings={...DEFAULT_STATE.settings,...(s.settings||{})};
       s.meetings=Array.isArray(s.meetings)?s.meetings:[];
       s.history=Array.isArray(s.history)?s.history:[];
-      s.inviteHistory=Array.isArray(s.inviteHistory)?s.inviteHistory:[];
+      s.inviteHistory=Array.isArray(s.inviteHistory)?s.inviteHistory:[],
+      continuity:{},
+      sync:{mode:'local',lastSyncedAt:null,revision:1};
       s.meetings=s.meetings.map(normalizeMeeting).filter(Boolean);
       return s;
     }
     function saveState(){
       state.build=BUILD;
+      state.sync=state.sync||{mode:'local',lastSyncedAt:null,revision:0};
+      state.sync.revision=(Number(state.sync.revision)||0)+1;
       try{localStorage.setItem(STORAGE_KEY,JSON.stringify(state));memoryState=safeClone(state);return true}
       catch(e){memoryState=safeClone(state);toast('Browser storage is unavailable. KANSEE is using temporary session memory.');return false}
     }
@@ -992,6 +1308,8 @@
         id:String(m.id||uid('room')),
         code:normalizeCode(m.code)||makeRoomCode(),
         title:String(m.title||'KANSEE Meeting').slice(0,120),
+        type:String(m.type||'meeting').slice(0,40),
+        layout:String(m.layout||'round-table').slice(0,40),
         date:String(m.date||''),time:String(m.time||''),duration:Number(m.duration)||60,
         access:['invite','waiting','trusted'].includes(m.access)?m.access:'invite',
         waitingRoom:m.waitingRoom!==false,muteOnEntry:m.muteOnEntry!==false,
@@ -1050,7 +1368,7 @@
       if(adapter&&adapter.connected===true){
         card.classList.add('connected');$('#networkStatusTitle').textContent='KANSEE network connected';$('#networkStatusText').textContent='A trusted backend adapter is active. Remote delivery depends on the adapter implementation and configured services.';
       }else{
-        card.classList.remove('connected');$('#networkStatusTitle').textContent='Local meeting preview';$('#networkStatusText').textContent='Rooms, local camera and microphone preview, chat, waiting-room demonstrations, and backups work on this device. Real participants on other devices require connected KANSEE services.';
+        card.classList.remove('connected');$('#networkStatusTitle').textContent='Local meeting preview';$('#networkStatusText').textContent='Rooms, local media preview, chat, lobby demonstrations, invitations, shared links, and backups persist on this device. Real participants, cross-device synchronization, casting, and live delivery require connected KANSEE services.';
       }
     }
     function renderMeetings(){
@@ -1068,7 +1386,7 @@
         const meta=document.createElement('div');meta.className='meeting-meta';meta.textContent=room.code+' · '+formattedWhen(room)+' · '+room.duration+' min';
         const badges=document.createElement('div');badges.className='button-row';
         const status=document.createElement('span');status.className='pill '+(room.status==='active'?'online':'');status.textContent=room.status==='active'?'Active':room.status==='ended'?'Ended':'Scheduled';badges.appendChild(status);
-        if(room.waitingRoom){const w=document.createElement('span');w.className='pill waiting';w.textContent='Waiting room';badges.appendChild(w)}
+        if(room.waitingRoom){const w=document.createElement('span');w.className='pill waiting';w.textContent='Reception Lobby';badges.appendChild(w)}
         const actions=document.createElement('div');actions.className='meeting-actions';
         const open=document.createElement('button');open.className='small-btn';open.type='button';open.textContent=room.status==='active'?'Open':'Start';open.onclick=()=>openRoom(room.id,true);
         const copy=document.createElement('button');copy.className='small-btn';copy.type='button';copy.textContent='Copy code';copy.onclick=()=>copyText(room.code,'Room code copied');
@@ -1084,7 +1402,7 @@
       $('#stageTitle').textContent=has?room.title:'Meeting Room';
       $('#stageSubtitle').textContent=has?room.code+' · '+formattedWhen(room):'Choose or create a room to begin.';
       $('#roomBannerTitle').textContent=has?room.title:'Ready when you are';
-      $('#roomBannerMeta').textContent=has?(room.code+' · '+(room.waitingRoom?'Waiting room on':'Waiting room off')+' · '+room.duration+' minutes'):'Create or join a room to begin.';
+      $('#roomBannerMeta').textContent=has?(room.code+' · '+(room.waitingRoom?'Reception Lobby on':'Reception Lobby off')+' · '+room.duration+' minutes'):'Create or join a room to begin.';
       $('#roomModeBadge').textContent=backendAdapter()&&backendAdapter().connected?'Network room':'Local Preview';
       $('#roomModeBadge').className='pill '+(backendAdapter()&&backendAdapter().connected?'online':'prototype');
       renderStage();
@@ -1118,7 +1436,7 @@
     }
     function renderWaiting(){
       const room=currentMeeting();const list=$('#waitingList');list.replaceChildren();const waiting=room?room.waiting:[];
-      if(!waiting||!waiting.length){const e=document.createElement('div');e.className='info-card';e.innerHTML='<p>The waiting room is empty.</p>';list.appendChild(e);return}
+      if(!waiting||!waiting.length){const e=document.createElement('div');e.className='info-card';e.innerHTML='<p>The reception lobby is empty.</p>';list.appendChild(e);return}
       waiting.forEach(p=>list.appendChild(makeParticipantRow(p,true)));
     }
     function makeParticipantRow(p,isWaiting){
@@ -1160,7 +1478,7 @@
     function renderDetails(){
       const room=currentMeeting();const list=$('#roomDetailsList');const modal=$('#detailsModalList');list.replaceChildren();modal.replaceChildren();
       const values=room?[
-        ['Title',room.title],['Room code',room.code],['Schedule',formattedWhen(room)],['Duration',room.duration+' minutes'],['Access',room.access],['Waiting room',room.waitingRoom?'On':'Off'],['Mute on entry',room.muteOnEntry?'On':'Off'],['Status',room.status]
+        ['Title',room.title],['Room type',room.type||'meeting'],['Room code',room.code],['Schedule',formattedWhen(room)],['Duration',room.duration+' minutes'],['Access',room.access],['Reception Lobby',room.waitingRoom?'On':'Off'],['Mute on entry',room.muteOnEntry?'On':'Off'],['Status',room.status]
       ]:[['Room','No room open'],['Service','333-333-7777'],['Mode','Local Preview']];
       [list,modal].forEach(target=>values.forEach(([k,v])=>{const dt=document.createElement('dt');dt.textContent=k;const dd=document.createElement('dd');dd.textContent=v;target.append(dt,dd)}));
       $('#meetingNotes').value=room?room.notes:'';$('#meetingNotes').disabled=!room;$('#saveNotesBtn').disabled=!room;$('#sendInviteBtn').disabled=!room;$('#chatInput').disabled=!room;$('#chatForm').querySelector('button').disabled=!room;
@@ -1168,7 +1486,7 @@
 
     function createMeeting(data,openNow){
       const room=normalizeMeeting({
-        id:uid('room'),code:makeRoomCode(),title:data.title||'KANSEE Meeting',date:data.date||'',time:data.time||'',duration:Number(data.duration)||60,access:data.access||'invite',waitingRoom:data.waitingRoom!==false,muteOnEntry:data.muteOnEntry!==false,createdAt:nowIso(),updatedAt:nowIso(),status:openNow?'active':'scheduled',participants:[],waiting:[],chat:[],notes:''
+        id:uid('room'),code:makeRoomCode(),type:data.type||'meeting',layout:data.layout||'round-table',title:data.title||'KANSEE Meeting',date:data.date||'',time:data.time||'',duration:Number(data.duration)||60,access:data.access||'invite',waitingRoom:data.waitingRoom!==false,muteOnEntry:data.muteOnEntry!==false,createdAt:nowIso(),updatedAt:nowIso(),status:openNow?'active':'scheduled',participants:[],waiting:[],chat:[],notes:''
       });
       state.meetings.unshift(room);saveState();renderAll();
       if(openNow) openRoom(room.id,false);
@@ -1233,10 +1551,10 @@
     function simulateGuest(){
       const room=currentMeeting();if(!room)return;const names=['Maya Light','Kai Sol','Luna Ray','Arella Hollo','Autumn Pearl'];const name=names[Math.floor(Math.random()*names.length)];
       const p=normalizeParticipant({id:uid('demo'),name,number:'333-'+String(Math.floor(1000000+Math.random()*8999999)),role:'participant',muted:true,camera:false,simulated:true});
-      if(room.waitingRoom){room.waiting.push(p);toast(name+' entered the simulated waiting room')}else{room.participants.push(p);toast(name+' joined as a demonstration participant')}
+      if(room.waitingRoom){room.waiting.push(p);toast(name+' entered the simulated reception lobby')}else{room.participants.push(p);toast(name+' joined as a demonstration participant')}
       addSystemMessage(room,name+' was added as a clearly labeled demonstration participant.');saveState();renderAll();
     }
-    function admitWaiting(id){const room=currentMeeting();if(!room)return;const i=room.waiting.findIndex(p=>p.id===id);if(i<0)return;const [p]=room.waiting.splice(i,1);p.muted=room.muteOnEntry;room.participants.push(p);addSystemMessage(room,p.name+' was admitted from the simulated waiting room.');saveState();renderAll();toast(p.name+' admitted')}
+    function admitWaiting(id){const room=currentMeeting();if(!room)return;const i=room.waiting.findIndex(p=>p.id===id);if(i<0)return;const [p]=room.waiting.splice(i,1);p.muted=room.muteOnEntry;room.participants.push(p);addSystemMessage(room,p.name+' was admitted from the simulated reception lobby.');saveState();renderAll();toast(p.name+' admitted')}
     function denyWaiting(id){const room=currentMeeting();if(!room)return;const p=room.waiting.find(x=>x.id===id);room.waiting=room.waiting.filter(x=>x.id!==id);if(p)addSystemMessage(room,p.name+' was denied entry in the local simulation.');saveState();renderAll()}
     function removeParticipant(id){const room=currentMeeting();if(!room)return;const p=room.participants.find(x=>x.id===id);room.participants=room.participants.filter(x=>x.id!==id);if(p)addSystemMessage(room,p.name+' was removed from the local simulation.');saveState();renderAll()}
     function toggleParticipantMute(id){const room=currentMeeting();if(!room)return;const p=room.participants.find(x=>x.id===id);if(!p)return;p.muted=!p.muted;addSystemMessage(room,(p.muted?'Muted ':'Unmuted ')+p.name+' in the local simulation.');saveState();renderAll()}
@@ -1278,6 +1596,67 @@
       });
     }
 
+
+    function roomJoinUrl(room){
+      const base=location.href.split(/[?#]/)[0];
+      return room ? base+'?room='+encodeURIComponent(room.code) : base;
+    }
+
+    function conversationShareText(room){
+      if(!room) return 'Join me in KANSEE.';
+      return room.title+'\nKANSEE conversation: '+room.code+'\n'+roomJoinUrl(room);
+    }
+
+    async function copyConversationLink(){
+      const room=currentMeeting();
+      if(!room){toast('Open a room first');return}
+      await copyText(roomJoinUrl(room),'Conversation link copied');
+    }
+
+    async function nativeShareConversation(){
+      const room=currentMeeting();
+      if(!room){toast('Open a room first');return}
+      const data={title:room.title,text:'Join this KANSEE conversation.',url:roomJoinUrl(room)};
+      if(navigator.share){
+        try{await navigator.share(data);toast('Share menu opened')}catch(e){if(e&&e.name!=='AbortError')toast('The share menu could not open')}
+      }else{
+        await copyText(conversationShareText(room),'Invitation copied for sharing');
+      }
+    }
+
+    async function copySocialInvite(){
+      const room=currentMeeting();
+      if(!room){toast('Open a room first');return}
+      const text='You are invited to '+room.title+' on KANSEE™.\n'+roomJoinUrl(room)+'\nRoom code: '+room.code;
+      await copyText(text,'Social invitation copied');
+    }
+
+    function showCastingOptions(){
+      toast('Use browser Cast, AirPlay, wireless display, smart-TV mirroring, or HDMI controls.');
+      alert(
+        'CASTING OPTIONS\\n\\n'+
+        '• Chrome / Edge: open the browser menu and choose Cast or Cast, save, and share.\\n'+
+        '• Apple devices: use AirPlay or Screen Mirroring from Control Center.\\n'+
+        '• Windows: use Wireless Display / Project controls.\\n'+
+        '• Smart TVs and streaming devices: use the device\\'s native casting or mirroring support.\\n'+
+        '• Any display: HDMI remains the most reliable direct connection.\\n\\n'+
+        'KANSEE does not claim direct control of third-party casting devices from this standalone page.'
+      );
+    }
+
+    function openCollabTool(name){
+      const room=currentMeeting();
+      if(!room){toast('Open a room first');return}
+      state.continuity[room.id]=state.continuity[room.id]||{};
+      const current=state.continuity[room.id][name]||'';
+      const value=prompt(name+' for '+room.title,current);
+      if(value===null)return;
+      state.continuity[room.id][name]=String(value).slice(0,12000);
+      saveState();
+      toast(name+' saved locally');
+    }
+
+
     function openMeetingModal(){const d=new Date(Date.now()+3600000);$('#meetingTitleInput').value='';$('#meetingDateInput').value=d.toISOString().slice(0,10);$('#meetingTimeInput').value=d.toTimeString().slice(0,5);openDialog($('#meetingModalBackdrop'),$('#meetingModal'))}
     function openProfileModal(){$('#profileNameInput').value=state.profile.name;$('#profileNumberInput').value=state.profile.number;$('#profileHandleInput').value=state.profile.handle;$('#profileRoleInput').value=state.profile.role;openDialog($('#profileModalBackdrop'),$('#profileModal'))}
     function openSettingsModal(){$('#signalingUrlInput').value=state.settings.signalingUrl;$('#turnUrlInput').value=state.settings.turnUrl;$('#mediaUrlInput').value=state.settings.mediaUrl;openDialog($('#settingsModalBackdrop'),$('#settingsModal'))}
@@ -1292,6 +1671,14 @@
 
     $('#createMeetingBtn').addEventListener('click',openMeetingModal);$('#instantMeetingBtn').addEventListener('click',instantMeeting);$('#joinRoomBtn').addEventListener('click',joinByCode);$('#joinCodeInput').addEventListener('keydown',e=>{if(e.key==='Enter')joinByCode()});
     $('#previewBtn').addEventListener('click',startPreview);$('#muteBtn').addEventListener('click',toggleMute);$('#cameraBtn').addEventListener('click',toggleCamera);$('#shareBtn').addEventListener('click',toggleShare);$('#simulateGuestBtn').addEventListener('click',simulateGuest);$('#leaveRoomBtn').addEventListener('click',leaveRoom);
+
+    $('#copyConversationLinkBtn').addEventListener('click',copyConversationLink);
+    $('#nativeShareBtn').addEventListener('click',nativeShareConversation);
+    $('#copySocialTextBtn').addEventListener('click',copySocialInvite);
+    $('#startPresentBtn').addEventListener('click',toggleShare);
+    $('#castHelpBtn').addEventListener('click',showCastingOptions);
+    $$('.collab-tool').forEach(button=>button.addEventListener('click',()=>openCollabTool(button.dataset.collabTool)));
+
     $('#copyInviteBtn').addEventListener('click',copyInvite);$('#roomDetailsBtn').addEventListener('click',openDetailsModal);$('#sendInviteBtn').addEventListener('click',sendInvite);$('#saveNotesBtn').addEventListener('click',saveNotes);
     $('#exportWorkspaceBtn').addEventListener('click',exportWorkspace);$('#exportHistoryBtn').addEventListener('click',exportHistory);$('#clearHistoryBtn').addEventListener('click',clearHistory);$('#importWorkspaceBtn').addEventListener('click',()=>$('#workspaceFileInput').click());$('#workspaceFileInput').addEventListener('change',e=>{importWorkspace(e.target.files&&e.target.files[0]);e.target.value=''})
     $('#openProfileBtn').addEventListener('click',openProfileModal);$('#openSettingsBtn').addEventListener('click',openSettingsModal);
@@ -1328,7 +1715,7 @@ $$('[data-mobile-panel]').forEach(b=>b.addEventListener('click',()=>activateMobi
 
     $('#chatForm').addEventListener('submit',e=>{e.preventDefault();const input=$('#chatInput');sendChat(input.value);input.value=''});
 
-    $('#meetingForm').addEventListener('submit',e=>{e.preventDefault();const data={title:$('#meetingTitleInput').value.trim()||'KANSEE Meeting',date:$('#meetingDateInput').value,time:$('#meetingTimeInput').value,duration:$('#meetingDurationInput').value,access:$('#meetingAccessInput').value,waitingRoom:$('#meetingWaitingInput').checked,muteOnEntry:$('#meetingMuteInput').checked};createMeeting(data,false);closeDialog($('#meetingModalBackdrop'))});
+    $('#meetingForm').addEventListener('submit',e=>{e.preventDefault();const data={type:$('#meetingTypeInput').value,title:$('#meetingTitleInput').value.trim()||'KANSEE Meeting',date:$('#meetingDateInput').value,time:$('#meetingTimeInput').value,duration:$('#meetingDurationInput').value,access:$('#meetingAccessInput').value,waitingRoom:$('#meetingWaitingInput').checked,muteOnEntry:$('#meetingMuteInput').checked};createMeeting(data,false);closeDialog($('#meetingModalBackdrop'))});
     $('#profileForm').addEventListener('submit',e=>{e.preventDefault();state.profile={name:$('#profileNameInput').value.trim()||'KANSEE Host',number:$('#profileNumberInput').value.trim()||'333-111-7777',handle:$('#profileHandleInput').value.trim(),role:$('#profileRoleInput').value};const room=currentMeeting();if(room)ensureLocalParticipant(room);saveState();renderAll();closeDialog($('#profileModalBackdrop'));toast('Meeting identity saved')});
     $('#settingsForm').addEventListener('submit',e=>{e.preventDefault();state.settings={signalingUrl:$('#signalingUrlInput').value.trim(),turnUrl:$('#turnUrlInput').value.trim(),mediaUrl:$('#mediaUrlInput').value.trim()};saveState();closeDialog($('#settingsModalBackdrop'));toast('Network configuration saved locally. No connection was attempted.')});
 
