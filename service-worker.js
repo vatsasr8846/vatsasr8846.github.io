@@ -11,7 +11,7 @@ const APP_SHELL = [
   "./install-app.js",
   "./assets/icons/icon-192.png",
   "./assets/icons/icon-512.png",
-  "./assets/icons/icon-maskable-512.png"
+  "./assets/icons/icon-maskable-512.png",
   "./register-service-worker.js",
 ];
 
