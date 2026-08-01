@@ -1,0 +1,1253 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="E=Ven Mail — the draft communications and email workspace for the Verve N Veda and 333 Network ecosystem.">
+  <meta name="theme-color" content="#0b1628">
+  <meta name="color-scheme" content="light dark">
+  <title>E=Ven Mail | 333 Communications</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600&family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root{
+      --night:#0b1628;
+      --night-2:#12233c;
+      --night-3:#1c3558;
+      --paper:#f4f0e7;
+      --paper-2:#fffdf8;
+      --white:#ffffff;
+      --ink:#172131;
+      --muted:#66717f;
+      --gold:#b99a60;
+      --gold-soft:#e8d7af;
+      --blue:#4f78a8;
+      --teal:#5b9f99;
+      --violet:#8778bb;
+      --rose:#b96f89;
+      --line:rgba(17,33,52,.14);
+      --line-light:rgba(255,255,255,.14);
+      --shadow:0 22px 55px rgba(7,18,34,.11);
+      --shadow-soft:0 11px 33px rgba(7,18,34,.08);
+      --r1:7px;
+      --r2:21px;
+      --max:1440px;
+      --serif:"Cormorant Garamond",Georgia,serif;
+      --brand:"Cinzel","Times New Roman",serif;
+      --sans:"Montserrat","Avenir Next","Segoe UI",Arial,sans-serif;
+    }
+
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-width:300px;
+      color:var(--ink);
+      background:linear-gradient(180deg,var(--paper-2),var(--paper));
+      font-family:var(--sans);
+      font-size:15px;
+      line-height:1.65;
+      font-weight:400;
+      -webkit-font-smoothing:antialiased;
+    }
+
+    button,input,textarea,select{font:inherit}
+    button{cursor:pointer}
+    a{color:inherit;text-decoration:none}
+    [hidden]{display:none!important}
+    :focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+
+    .skip{
+      position:fixed;left:11px;top:11px;z-index:5000;
+      transform:translateY(-170%);
+      padding:10px 14px;border-radius:7px;
+      color:white;background:#111;
+    }
+    .skip:focus{transform:none}
+
+    .app{
+      min-height:100vh;
+      display:grid;
+      grid-template-rows:auto auto 1fr;
+    }
+
+    .utility{
+      color:#dbe3ec;
+      background:#050b14;
+      border-bottom:1px solid rgba(255,255,255,.08);
+    }
+    .utility-inner{
+      width:min(calc(100% - 24px),var(--max));
+      min-height:36px;
+      margin:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:1rem;
+      font-size:.68rem;
+    }
+    .utility-links{display:flex;gap:14px;flex-wrap:wrap}
+
+    .header{
+      position:sticky;
+      top:0;
+      z-index:1100;
+      color:white;
+      background:rgba(11,22,40,.96);
+      border-bottom:1px solid rgba(255,255,255,.09);
+      backdrop-filter:blur(16px);
+    }
+    .header-inner{
+      width:min(calc(100% - 24px),var(--max));
+      min-height:70px;
+      margin:auto;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:16px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:11px;
+      min-width:0;
+    }
+    .brand-mark{
+      width:46px;height:42px;
+      display:grid;place-items:center;
+      flex:0 0 46px;
+      border:1px solid rgba(232,215,175,.45);
+      border-radius:7px;
+      color:var(--gold-soft);
+      background:rgba(255,255,255,.04);
+      font:500 .72rem var(--brand);
+      letter-spacing:.04em;
+    }
+    .brand strong{
+      display:block;
+      font:500 1rem var(--brand);
+      letter-spacing:.07em;
+      text-transform:uppercase;
+    }
+    .brand small{
+      display:block;
+      margin-top:2px;
+      color:rgba(255,255,255,.58);
+      font-size:.54rem;
+      letter-spacing:.11em;
+      text-transform:uppercase;
+    }
+
+    .search-wrap{
+      flex:1;
+      max-width:620px;
+      position:relative;
+    }
+    .search-wrap input{
+      width:100%;
+      min-height:42px;
+      padding:0 14px 0 42px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:7px;
+      color:white;
+      background:rgba(255,255,255,.06);
+    }
+    .search-wrap::before{
+      content:"⌕";
+      position:absolute;
+      left:15px;top:50%;
+      transform:translateY(-50%);
+      color:#cad4df;
+      font-size:1.05rem;
+    }
+
+    .header-actions{display:flex;gap:7px}
+    .icon-button{
+      width:42px;height:42px;
+      display:grid;place-items:center;
+      border:1px solid rgba(255,255,255,.17);
+      border-radius:7px;
+      color:white;background:transparent;
+    }
+    .icon-button:hover{background:rgba(255,255,255,.07)}
+
+    .workspace{
+      width:min(100%,var(--max));
+      margin:auto;
+      min-height:calc(100vh - 106px);
+      display:grid;
+      grid-template-columns:235px minmax(360px,1fr) minmax(420px,1.15fr);
+      background:var(--paper-2);
+      border-inline:1px solid var(--line);
+    }
+
+    .sidebar{
+      padding:16px 12px;
+      border-right:1px solid var(--line);
+      background:#f0ece3;
+    }
+
+    .compose-button{
+      width:100%;
+      min-height:48px;
+      border:0;
+      border-radius:7px;
+      color:#111824;
+      background:linear-gradient(145deg,var(--gold-soft),var(--gold));
+      font-weight:600;
+      letter-spacing:.04em;
+      box-shadow:var(--shadow-soft);
+    }
+
+    .folder-list,.account-list{
+      display:grid;
+      gap:5px;
+      margin-top:16px;
+    }
+    .folder-button,.account-button{
+      width:100%;
+      min-height:42px;
+      display:grid;
+      grid-template-columns:28px 1fr auto;
+      align-items:center;
+      gap:8px;
+      padding:8px 10px;
+      border:1px solid transparent;
+      border-radius:7px;
+      color:var(--ink);
+      background:transparent;
+      text-align:left;
+    }
+    .folder-button:hover,.account-button:hover{background:#fff}
+    .folder-button.active{
+      color:white;
+      background:var(--night-2);
+    }
+    .folder-count{
+      font-size:.68rem;
+      color:inherit;
+      opacity:.72;
+    }
+
+    .sidebar-label{
+      margin:22px 9px 8px;
+      color:var(--gold);
+      font-family:var(--brand);
+      font-size:.62rem;
+      letter-spacing:.15em;
+      text-transform:uppercase;
+    }
+
+    .account-dot{
+      width:24px;height:24px;
+      display:grid;place-items:center;
+      border-radius:7px;
+      color:white;background:var(--violet);
+      font-size:.65rem;
+    }
+
+    .storage-card{
+      margin-top:22px;
+      padding:13px;
+      border:1px solid var(--line);
+      border-radius:21px;
+      background:#fff;
+    }
+    .storage-card strong{
+      display:block;
+      font-family:var(--serif);
+      font-size:1.1rem;
+      font-weight:500;
+    }
+    .storage-bar{
+      height:7px;
+      margin:9px 0;
+      overflow:hidden;
+      border-radius:7px;
+      background:#e6e0d5;
+    }
+    .storage-bar span{
+      display:block;width:11%;height:100%;
+      background:linear-gradient(90deg,var(--violet),var(--blue));
+    }
+    .storage-card small{color:var(--muted)}
+
+    .mail-list-panel{
+      min-width:0;
+      border-right:1px solid var(--line);
+      background:#fff;
+    }
+
+    .mail-list-head{
+      min-height:72px;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+    }
+    .mail-list-head h2{
+      margin:0;
+      font:500 1.8rem var(--serif);
+    }
+    .mail-list-head p{
+      margin:2px 0 0;
+      color:var(--muted);
+      font-size:.72rem;
+    }
+    .list-actions{display:flex;gap:6px}
+
+    .mail-list{
+      max-height:calc(100vh - 178px);
+      overflow:auto;
+    }
+
+    .mail-row{
+      display:grid;
+      grid-template-columns:28px 1fr auto;
+      gap:10px;
+      padding:14px 16px;
+      border-bottom:1px solid var(--line);
+      cursor:pointer;
+      transition:.15s;
+    }
+    .mail-row:hover{background:#faf7f0}
+    .mail-row.active{background:#eef3f8}
+    .mail-row.unread .sender,.mail-row.unread .subject{font-weight:600}
+    .mail-check{
+      width:18px;height:18px;
+      margin-top:4px;
+      border:1px solid var(--line);
+      border-radius:4px;
+      background:white;
+    }
+    .mail-main{min-width:0;text-align:left}
+    .mail-line{
+      display:flex;
+      align-items:center;
+      gap:8px;
+      min-width:0;
+    }
+    .sender,.subject,.preview{
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
+    }
+    .sender{font-size:.79rem}
+    .subject{margin-top:3px;color:var(--ink);font-size:.81rem}
+    .preview{margin-top:2px;color:var(--muted);font-size:.73rem}
+    .mail-meta{text-align:right}
+    .mail-time{color:var(--muted);font-size:.65rem}
+    .mail-star{
+      margin-top:9px;
+      border:0;background:transparent;
+      color:#a7a095;font-size:1rem;
+    }
+    .mail-star.active{color:var(--gold)}
+
+    .reader{
+      min-width:0;
+      background:var(--paper-2);
+    }
+
+    .reader-empty{
+      min-height:100%;
+      display:grid;
+      place-items:center;
+      padding:44px;
+      text-align:center;
+      color:var(--muted);
+    }
+    .reader-empty .symbol{font-size:4rem}
+    .reader-empty h2{
+      margin:10px 0 0;
+      color:var(--ink);
+      font:500 2.3rem var(--serif);
+    }
+
+    .reader-content{height:100%;display:grid;grid-template-rows:auto 1fr auto}
+    .reader-head{
+      padding:18px 22px;
+      border-bottom:1px solid var(--line);
+      background:#fff;
+      text-align:left;
+    }
+    .reader-title{
+      display:flex;
+      justify-content:space-between;
+      gap:16px;
+      align-items:flex-start;
+    }
+    .reader-title h2{
+      margin:0;
+      font:500 clamp(1.8rem,3vw,2.7rem) var(--serif);
+      line-height:1.08;
+    }
+    .reader-tools{display:flex;gap:6px;flex-wrap:wrap}
+    .reader-from{
+      margin-top:13px;
+      display:flex;align-items:center;gap:10px;
+    }
+    .avatar{
+      width:40px;height:40px;display:grid;place-items:center;
+      border-radius:7px;color:white;background:var(--blue);
+      font-weight:600;
+    }
+    .reader-from strong{display:block;font-size:.8rem}
+    .reader-from small{color:var(--muted)}
+
+    .reader-body{
+      overflow:auto;
+      padding:28px 30px 44px;
+      text-align:left;
+    }
+    .reader-body p{max-width:760px}
+    .reader-body blockquote{
+      margin:22px 0;
+      padding:16px 20px;
+      border-left:3px solid var(--gold);
+      background:#f7f2e8;
+      color:#505865;
+    }
+    .attachment-grid{
+      display:grid;
+      grid-template-columns:repeat(2,minmax(0,1fr));
+      gap:8px;
+      margin-top:24px;
+      max-width:720px;
+    }
+    .attachment{
+      min-height:70px;
+      display:grid;
+      grid-template-columns:42px 1fr auto;
+      align-items:center;
+      gap:10px;
+      padding:10px;
+      border:1px solid var(--line);
+      border-radius:7px;
+      background:white;
+    }
+    .attachment-icon{
+      width:42px;height:42px;display:grid;place-items:center;
+      border-radius:7px;background:#edf1f6;
+    }
+    .attachment strong{font-size:.75rem}
+    .attachment small{display:block;color:var(--muted)}
+
+    .reply-bar{
+      display:flex;
+      gap:8px;
+      padding:14px 20px;
+      border-top:1px solid var(--line);
+      background:white;
+    }
+
+    .button{
+      min-height:40px;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:7px;
+      padding:8px 12px;
+      border:1px solid var(--line);
+      border-radius:7px;
+      color:var(--ink);
+      background:white;
+      font-size:.72rem;
+      font-weight:500;
+    }
+    .button:hover{background:#f5f1e8}
+    .button.primary{color:white;background:var(--night-2);border-color:var(--night-2)}
+    .button.danger{color:white;background:#8c3341;border-color:#8c3341}
+
+    .modal-layer{
+      position:fixed;inset:0;z-index:3000;
+      display:none;
+      align-items:center;justify-content:center;
+      padding:16px;
+      background:rgba(4,9,17,.75);
+      backdrop-filter:blur(6px);
+    }
+    .modal-layer.active{display:flex}
+    .modal{
+      width:min(100%,760px);
+      max-height:90vh;
+      overflow:auto;
+      border:1px solid var(--line-light);
+      border-radius:21px;
+      color:var(--ink);
+      background:var(--paper-2);
+      box-shadow:0 30px 90px rgba(0,0,0,.38);
+      text-align:left;
+    }
+    .modal-head{
+      display:flex;justify-content:space-between;align-items:center;gap:12px;
+      padding:16px 18px;border-bottom:1px solid var(--line);
+    }
+    .modal-head h2{margin:0;font:500 2rem var(--serif)}
+    .modal-close{
+      width:40px;height:40px;border:1px solid var(--line);
+      border-radius:7px;background:white;
+    }
+    .modal-body{padding:18px}
+    .modal-foot{
+      display:flex;justify-content:flex-end;gap:8px;
+      padding:14px 18px;border-top:1px solid var(--line);
+    }
+
+    .field{display:grid;gap:6px;margin-bottom:12px}
+    .field label{
+      color:var(--muted);
+      font-size:.66rem;
+      font-weight:600;
+      letter-spacing:.07em;
+      text-transform:uppercase;
+    }
+    .field input,.field textarea,.field select{
+      width:100%;
+      border:1px solid var(--line);
+      border-radius:7px;
+      color:var(--ink);
+      background:white;
+    }
+    .field input,.field select{min-height:42px;padding:0 11px}
+    .field textarea{min-height:220px;padding:11px;resize:vertical}
+    .form-row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+
+    .compose-tools{
+      display:flex;gap:7px;flex-wrap:wrap;
+      padding-top:8px;
+    }
+    .compose-tools button{
+      min-height:36px;padding:7px 10px;border:1px solid var(--line);
+      border-radius:7px;background:#f7f3eb;
+    }
+
+    .architecture-strip{
+      grid-column:1/-1;
+      display:grid;
+      grid-template-columns:1.3fr .7fr;
+      gap:16px;
+      align-items:center;
+      padding:18px 22px;
+      color:white;
+      background:linear-gradient(145deg,var(--night-3),var(--night));
+      border-top:1px solid rgba(255,255,255,.08);
+    }
+    .architecture-strip h3{
+      margin:0;
+      font:500 1.7rem var(--serif);
+    }
+    .architecture-strip p{
+      margin:6px 0 0;
+      color:#bec9d4;
+      font-size:.78rem;
+    }
+    .status-grid{
+      display:grid;grid-template-columns:repeat(2,1fr);gap:7px;
+    }
+    .status-item{
+      min-height:62px;
+      display:grid;align-content:center;
+      padding:8px 10px;
+      border:1px solid rgba(255,255,255,.12);
+      border-radius:7px;
+      background:rgba(255,255,255,.04);
+    }
+    .status-item strong{
+      color:var(--gold-soft);
+      font:500 .62rem var(--brand);
+      letter-spacing:.09em;
+      text-transform:uppercase;
+    }
+    .status-item span{margin-top:3px;color:#d8e0e7;font-size:.68rem}
+
+    .toast{
+      position:fixed;
+      left:50%;bottom:18px;z-index:4000;
+      transform:translate(-50%,120px);
+      padding:11px 15px;
+      border-radius:7px;
+      color:white;background:#111d2e;
+      box-shadow:var(--shadow);
+      transition:.2s;
+    }
+    .toast.show{transform:translate(-50%,0)}
+
+    @media(max-width:1120px){
+      .workspace{grid-template-columns:210px minmax(340px,1fr)}
+      .reader{position:fixed;inset:106px 0 0 0;z-index:800;display:none}
+      .reader.mobile-open{display:block}
+    }
+    @media(max-width:760px){
+      .search-wrap{display:none}
+      .workspace{grid-template-columns:1fr}
+      .sidebar{
+        position:fixed;inset:106px auto 0 0;z-index:900;width:min(86vw,290px);
+        transform:translateX(-100%);transition:.2s;
+      }
+      .sidebar.open{transform:none}
+      .mail-list-panel{border-right:0}
+      .architecture-strip{grid-template-columns:1fr}
+      .attachment-grid,.form-row{grid-template-columns:1fr}
+    }
+    @media(max-width:520px){
+      .utility-inner{justify-content:center}
+      .utility-inner>span{display:none}
+      .brand small{display:none}
+      .header-actions .icon-button:nth-child(2){display:none}
+      .mail-list-head{padding-inline:12px}
+      .mail-row{padding-inline:12px}
+      .reader-body{padding:22px 18px}
+    }
+    @media(prefers-reduced-motion:reduce){
+      *,*::before,*::after{scroll-behavior:auto!important;transition:none!important;animation:none!important}
+    }
+  </style>
+</head>
+
+<body>
+  <a class="skip" href="#mailList">Skip to messages</a>
+
+  <div class="app">
+    <div class="utility">
+      <div class="utility-inner">
+        <span>E=Ven Mail · 333 Communications · Local-first development draft</span>
+        <nav class="utility-links" aria-label="Network links">
+          <a href="https://vervenveda.github.io/333.github.io/">333 Network</a>
+          <a href="https://vervenveda.github.io/">Verve N Veda</a>
+          <a href="https://vervenveda.github.io/proresource_hub.github.io/">ProResource Hub</a>
+        </nav>
+      </div>
+    </div>
+
+    <header class="header">
+      <div class="header-inner">
+        <button class="icon-button" id="sidebarToggle" type="button" aria-label="Open folders">☰</button>
+
+        <a class="brand" href="#" aria-label="E=Ven Mail home">
+          <span class="brand-mark">E=V</span>
+          <span>
+            <strong>E=Ven Mail</strong>
+            <small>Private Mail · 333 Identity · Verve N Veda</small>
+          </span>
+        </a>
+
+        <label class="search-wrap">
+          <span class="skip">Search mail</span>
+          <input id="mailSearch" type="search" placeholder="Search messages, people, attachments, or 333 identities">
+        </label>
+
+        <div class="header-actions">
+          <button class="icon-button" id="syncButton" type="button" aria-label="Check synchronization">↻</button>
+          <button class="icon-button" id="settingsButton" type="button" aria-label="Open settings">⚙</button>
+          <button class="icon-button" id="profileButton" type="button" aria-label="Open profile">JP</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="workspace">
+      <aside class="sidebar" id="sidebar">
+        <button class="compose-button" id="composeButton" type="button">✉ Compose Message</button>
+
+        <nav class="folder-list" aria-label="Mail folders">
+          <button class="folder-button active" data-folder="inbox"><span>📥</span><span>Inbox</span><span class="folder-count" id="inboxCount">0</span></button>
+          <button class="folder-button" data-folder="starred"><span>⭐</span><span>Starred</span><span class="folder-count">—</span></button>
+          <button class="folder-button" data-folder="sent"><span>📤</span><span>Sent</span><span class="folder-count">—</span></button>
+          <button class="folder-button" data-folder="drafts"><span>📝</span><span>Drafts</span><span class="folder-count" id="draftCount">0</span></button>
+          <button class="folder-button" data-folder="archive"><span>🗄</span><span>Archive</span><span class="folder-count">—</span></button>
+          <button class="folder-button" data-folder="spam"><span>🛡</span><span>Spam</span><span class="folder-count">—</span></button>
+          <button class="folder-button" data-folder="trash"><span>🗑</span><span>Trash</span><span class="folder-count">—</span></button>
+        </nav>
+
+        <p class="sidebar-label">Connected Accounts</p>
+        <div class="account-list">
+          <button class="account-button"><span class="account-dot">V</span><span>jennifer@vervenveda.com</span><span>✓</span></button>
+          <button class="account-button"><span class="account-dot" style="background:var(--teal)">333</span><span>333 Identity</span><span>●</span></button>
+          <button class="account-button"><span class="account-dot" style="background:var(--rose)">KA</span><span>Academy Mail</span><span>+</span></button>
+        </div>
+
+        <p class="sidebar-label">Smart Views</p>
+        <div class="folder-list">
+          <button class="folder-button" data-smart="people"><span>👥</span><span>People</span><span></span></button>
+          <button class="folder-button" data-smart="calendar"><span>📅</span><span>Calendar Invites</span><span></span></button>
+          <button class="folder-button" data-smart="kansee"><span>🎥</span><span>KANSEE Rooms</span><span></span></button>
+          <button class="folder-button" data-smart="files"><span>📎</span><span>Attachments</span><span></span></button>
+        </div>
+
+        <article class="storage-card">
+          <strong>Local Mailbox</strong>
+          <div class="storage-bar"><span></span></div>
+          <small>11% of local draft capacity used. Production mail storage will move to the E=Ven backend.</small>
+        </article>
+      </aside>
+
+      <section class="mail-list-panel" aria-labelledby="mailListTitle">
+        <header class="mail-list-head">
+          <div>
+            <h2 id="mailListTitle">Inbox</h2>
+            <p id="mailListSubtitle">Messages for jennifer@vervenveda.com</p>
+          </div>
+          <div class="list-actions">
+            <button class="icon-button" style="color:var(--ink);border-color:var(--line)" id="refreshList" type="button" aria-label="Refresh messages">↻</button>
+            <button class="icon-button" style="color:var(--ink);border-color:var(--line)" type="button" aria-label="More mail options">•••</button>
+          </div>
+        </header>
+
+        <div class="mail-list" id="mailList"></div>
+      </section>
+
+      <section class="reader" id="reader" aria-live="polite">
+        <div class="reader-empty" id="readerEmpty">
+          <div>
+            <div class="symbol">✉</div>
+            <h2>Welcome to E=Ven Mail</h2>
+            <p>Select a message, compose a new one, or explore the 333 communication tools.</p>
+          </div>
+        </div>
+        <div class="reader-content" id="readerContent" hidden></div>
+      </section>
+
+      <section class="architecture-strip" aria-labelledby="architectureTitle">
+        <div>
+          <h3 id="architectureTitle">Designed for a real mail backend—not just a browser mockup.</h3>
+          <p>
+            This draft currently saves messages and drafts in localStorage. Production E=Ven Mail will require verified identities,
+            mailbox provisioning, SMTP submission, inbound mail routing, IMAP/JMAP access, encrypted storage, spam filtering,
+            SPF, DKIM, DMARC, audit logs, account recovery, quotas, and administrator controls.
+          </p>
+        </div>
+        <div class="status-grid">
+          <div class="status-item"><strong>Active</strong><span>Local mailbox draft</span></div>
+          <div class="status-item"><strong>Active</strong><span>Compose, drafts, folders</span></div>
+          <div class="status-item"><strong>Planned</strong><span>@vervenveda.com provisioning</span></div>
+          <div class="status-item"><strong>Planned</strong><span>SMTP · IMAP · JMAP · Sync</span></div>
+        </div>
+      </section>
+    </main>
+  </div>
+
+  <div class="modal-layer" id="modalLayer" aria-hidden="true">
+    <article class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <header class="modal-head">
+        <h2 id="modalTitle">Compose</h2>
+        <button class="modal-close" id="modalClose" type="button" aria-label="Close">×</button>
+      </header>
+      <div class="modal-body" id="modalBody"></div>
+      <footer class="modal-foot" id="modalFoot"></footer>
+    </article>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script>
+    (() => {
+      "use strict";
+
+      const STORAGE_KEY = "even_mail_workspace_v1";
+      const APP_VERSION = "0.1.0-draft";
+
+      const EVEN_MAIL_BACKEND = Object.freeze({
+        mode: "local",
+        apiBase: "",
+        websocketUrl: "",
+        mailDomain: "vervenveda.com",
+        syncEnabled: false
+      });
+
+      const EvenMailService = Object.freeze({
+        async getSession(){
+          if (EVEN_MAIL_BACKEND.mode !== "remote") return null;
+          throw new Error("Remote authentication is not configured.");
+        },
+        async provisionMailbox(_request){
+          if (EVEN_MAIL_BACKEND.mode !== "remote") return {ok:false,reason:"local-mode"};
+          throw new Error("Mailbox provisioning is not configured.");
+        },
+        async syncMailbox(_mailbox){
+          if (EVEN_MAIL_BACKEND.mode !== "remote") return {ok:false,reason:"local-mode"};
+          throw new Error("Mailbox synchronization is not configured.");
+        },
+        async submitMessage(_message){
+          if (EVEN_MAIL_BACKEND.mode !== "remote") return {ok:false,reason:"local-mode"};
+          throw new Error("SMTP submission is not configured.");
+        }
+      });
+
+      const now = Date.now();
+
+      const starterState = {
+        version: APP_VERSION,
+        activeFolder: "inbox",
+        selectedMessageId: null,
+        profile: {
+          id: "user-jennifer",
+          name: "Jennifer Kay Pearl",
+          address: "jennifer@vervenveda.com",
+          number333: "333-111-0001"
+        },
+        mailboxes: [
+          {id:"primary",address:"jennifer@vervenveda.com",label:"Primary",status:"local"},
+          {id:"identity",address:"333-111-0001",label:"333 Identity",status:"local"}
+        ],
+        messages: [
+          {
+            id:"m-welcome",
+            folder:"inbox",
+            unread:true,
+            starred:true,
+            from:{name:"E=Ven Mail",address:"welcome@vervenveda.com"},
+            to:["jennifer@vervenveda.com"],
+            subject:"Welcome to the E=Ven Mail development workspace",
+            preview:"Your local-first mailbox is ready for design and backend integration.",
+            body:[
+              "Welcome to E=Ven Mail.",
+              "This development draft demonstrates the future mailbox experience for Verve N Veda members and the wider 333 Network.",
+              "Messages, drafts, folders, and interface settings currently remain on this device. Real delivery to outside addresses will begin only after the authenticated E=Ven backend, DNS records, SMTP submission, inbound routing, mailbox storage, and anti-abuse systems are connected."
+            ],
+            createdAt:now-1000*60*12,
+            attachments:[
+              {name:"E=Ven-Mail-Architecture.md",type:"document",size:"18 KB"},
+              {name:"333-Identity-Map.json",type:"data",size:"7 KB"}
+            ]
+          },
+          {
+            id:"m-kansee",
+            folder:"inbox",
+            unread:true,
+            starred:false,
+            from:{name:"KANSEE Rooms",address:"rooms@vervenveda.com"},
+            to:["jennifer@vervenveda.com"],
+            subject:"Your KANSEE collaboration room is ready",
+            preview:"Community planning session · Room code KNS-333-4821",
+            body:[
+              "Your KANSEE room has been prepared locally.",
+              "Meeting: Community Planning Session",
+              "Room code: KNS-333-4821",
+              "This message is a development preview. Permanent room links and real invitations will activate after the 333 identity and KANSEE signaling backend are connected."
+            ],
+            createdAt:now-1000*60*48,
+            attachments:[{name:"KANSEE-Invite.ics",type:"calendar",size:"3 KB"}]
+          },
+          {
+            id:"m-bazaar",
+            folder:"inbox",
+            unread:false,
+            starred:false,
+            from:{name:"Bazaar Art Live",address:"community@vervenveda.com"},
+            to:["jennifer@vervenveda.com"],
+            subject:"Three new creative community notifications",
+            preview:"A new follower, a group invitation, and a comment are waiting.",
+            body:[
+              "Bazaar Art Live has three local notifications waiting:",
+              "• A new artist followed your founder profile.",
+              "• You were invited to the Community Mural Planning group.",
+              "• A member commented on your River to Road artwork.",
+              "Cross-device notifications will activate after shared 333 accounts and push services are connected."
+            ],
+            createdAt:now-1000*60*130,
+            attachments:[]
+          },
+          {
+            id:"m-academy",
+            folder:"inbox",
+            unread:false,
+            starred:true,
+            from:{name:"Khaemenes Academy",address:"academy@vervenveda.com"},
+            to:["jennifer@vervenveda.com"],
+            subject:"Academy network alignment summary",
+            preview:"The grouped Khaemenes repositories are now represented across the public gateway.",
+            body:[
+              "The Khaemenes Academy public network has been organized around Preschool, Kinder Garden, Elementary, Middle, High School, Higher Learning, and Linguistics.",
+              "A future Academy mail domain can be connected to the same E=Ven identity service while preserving role-specific addresses for students, families, and educators."
+            ],
+            createdAt:now-1000*60*60*8,
+            attachments:[{name:"Academy-Mail-Roles.pdf",type:"pdf",size:"126 KB"}]
+          },
+          {
+            id:"m-draft",
+            folder:"drafts",
+            unread:false,
+            starred:false,
+            from:{name:"Jennifer Kay Pearl",address:"jennifer@vervenveda.com"},
+            to:[""],
+            subject:"Welcome to Verve N Veda",
+            preview:"A first welcome message for future members…",
+            body:["A first welcome message for future members of the Verve N Veda ecosystem."],
+            createdAt:now-1000*60*5,
+            attachments:[]
+          }
+        ],
+        sync:{mode:"local",revision:1,lastSyncedAt:null}
+      };
+
+      function loadState(){
+        try{
+          const parsed = JSON.parse(localStorage.getItem(STORAGE_KEY) || "null");
+          if(!parsed) return structuredClone(starterState);
+          return {
+            ...structuredClone(starterState),
+            ...parsed,
+            version:APP_VERSION,
+            sync:{...starterState.sync,...(parsed.sync||{}),mode:EVEN_MAIL_BACKEND.mode}
+          };
+        }catch{
+          return structuredClone(starterState);
+        }
+      }
+
+      let state = loadState();
+
+      const $ = selector => document.querySelector(selector);
+      const $$ = selector => Array.from(document.querySelectorAll(selector));
+
+      function saveState(){
+        state.version=APP_VERSION;
+        state.sync=state.sync||{mode:"local",revision:0,lastSyncedAt:null};
+        state.sync.revision=(Number(state.sync.revision)||0)+1;
+        localStorage.setItem(STORAGE_KEY,JSON.stringify(state));
+      }
+
+      function esc(value){
+        return String(value ?? "").replace(/[&<>"']/g,char=>({
+          "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"
+        }[char]));
+      }
+
+      function formatTime(timestamp){
+        const date=new Date(timestamp);
+        const today=new Date();
+        if(date.toDateString()===today.toDateString()){
+          return date.toLocaleTimeString([], {hour:"numeric",minute:"2-digit"});
+        }
+        return date.toLocaleDateString([], {month:"short",day:"numeric"});
+      }
+
+      function showToast(message){
+        const toast=$("#toast");
+        toast.textContent=message;
+        toast.classList.add("show");
+        clearTimeout(showToast.timer);
+        showToast.timer=setTimeout(()=>toast.classList.remove("show"),1700);
+      }
+
+      function activeMessages(){
+        let messages=[...state.messages];
+        const folder=state.activeFolder;
+        if(folder==="starred") messages=messages.filter(message=>message.starred);
+        else messages=messages.filter(message=>message.folder===folder);
+        const query=$("#mailSearch").value.trim().toLowerCase();
+        if(query){
+          messages=messages.filter(message=>
+            [message.from.name,message.from.address,message.subject,message.preview,...message.body]
+              .join(" ").toLowerCase().includes(query)
+          );
+        }
+        return messages.sort((a,b)=>b.createdAt-a.createdAt);
+      }
+
+      function renderFolders(){
+        $$(".folder-button[data-folder]").forEach(button=>{
+          button.classList.toggle("active",button.dataset.folder===state.activeFolder);
+        });
+        $("#inboxCount").textContent=state.messages.filter(m=>m.folder==="inbox"&&m.unread).length;
+        $("#draftCount").textContent=state.messages.filter(m=>m.folder==="drafts").length;
+      }
+
+      function renderList(){
+        renderFolders();
+        const labels={
+          inbox:["Inbox","Messages for "+state.profile.address],
+          starred:["Starred","Important messages across your mailbox"],
+          sent:["Sent","Messages sent from E=Ven Mail"],
+          drafts:["Drafts","Messages saved on this device"],
+          archive:["Archive","Messages preserved outside the inbox"],
+          spam:["Spam","Potentially unsafe or unwanted mail"],
+          trash:["Trash","Deleted messages"]
+        };
+        const [title,subtitle]=labels[state.activeFolder]||labels.inbox;
+        $("#mailListTitle").textContent=title;
+        $("#mailListSubtitle").textContent=subtitle;
+
+        const messages=activeMessages();
+        $("#mailList").innerHTML=messages.length?messages.map(message=>`
+          <article class="mail-row ${message.unread?"unread":""} ${message.id===state.selectedMessageId?"active":""}" data-message-id="${esc(message.id)}">
+            <span class="mail-check" aria-hidden="true"></span>
+            <div class="mail-main">
+              <div class="mail-line"><span class="sender">${esc(message.from.name)}</span></div>
+              <div class="subject">${esc(message.subject||"(No subject)")}</div>
+              <div class="preview">${esc(message.preview||message.body?.[0]||"")}</div>
+            </div>
+            <div class="mail-meta">
+              <div class="mail-time">${formatTime(message.createdAt)}</div>
+              <button class="mail-star ${message.starred?"active":""}" data-star-id="${esc(message.id)}" type="button" aria-label="Toggle star">★</button>
+            </div>
+          </article>
+        `).join(""):`<div class="reader-empty" style="min-height:320px"><div><div class="symbol">📭</div><h2>No messages here</h2><p>This folder is ready for future mail.</p></div></div>`;
+      }
+
+      function openMessage(id){
+        const message=state.messages.find(item=>item.id===id);
+        if(!message)return;
+        state.selectedMessageId=id;
+        message.unread=false;
+        saveState();
+        renderList();
+
+        $("#readerEmpty").hidden=true;
+        const reader=$("#readerContent");
+        reader.hidden=false;
+        reader.innerHTML=`
+          <header class="reader-head">
+            <div class="reader-title">
+              <h2>${esc(message.subject||"(No subject)")}</h2>
+              <div class="reader-tools">
+                <button class="button" data-reader-action="archive">🗄 Archive</button>
+                <button class="button" data-reader-action="delete">🗑 Delete</button>
+                <button class="button" data-reader-action="more">•••</button>
+              </div>
+            </div>
+            <div class="reader-from">
+              <span class="avatar">${esc(message.from.name.split(/\s+/).map(part=>part[0]).join("").slice(0,2))}</span>
+              <div>
+                <strong>${esc(message.from.name)} &lt;${esc(message.from.address)}&gt;</strong>
+                <small>to ${esc(message.to.join(", "))} · ${new Date(message.createdAt).toLocaleString()}</small>
+              </div>
+            </div>
+          </header>
+
+          <div class="reader-body">
+            ${message.body.map(paragraph=>`<p>${esc(paragraph)}</p>`).join("")}
+            ${message.attachments?.length?`
+              <div class="attachment-grid">
+                ${message.attachments.map(file=>`
+                  <div class="attachment">
+                    <span class="attachment-icon">${file.type==="calendar"?"📅":file.type==="pdf"?"📕":file.type==="data"?"🧩":"📄"}</span>
+                    <div><strong>${esc(file.name)}</strong><small>${esc(file.size)}</small></div>
+                    <button class="button" type="button" data-attachment="${esc(file.name)}">Open</button>
+                  </div>
+                `).join("")}
+              </div>
+            `:""}
+          </div>
+
+          <footer class="reply-bar">
+            <button class="button primary" data-reply="reply">↩ Reply</button>
+            <button class="button" data-reply="forward">↪ Forward</button>
+            <button class="button" data-reply="kansee">🎥 Invite to KANSEE</button>
+            <button class="button" data-reply="hollo">💬 Continue in HOLLO</button>
+          </footer>
+        `;
+        $("#reader").classList.add("mobile-open");
+      }
+
+      function closeReader(){
+        $("#reader").classList.remove("mobile-open");
+      }
+
+      function modal(title,body,footer=""){
+        $("#modalTitle").textContent=title;
+        $("#modalBody").innerHTML=body;
+        $("#modalFoot").innerHTML=footer;
+        $("#modalLayer").classList.add("active");
+        $("#modalLayer").setAttribute("aria-hidden","false");
+      }
+
+      function closeModal(){
+        $("#modalLayer").classList.remove("active");
+        $("#modalLayer").setAttribute("aria-hidden","true");
+      }
+
+      function openCompose(options={}){
+        const draft=options.draft||null;
+        modal("Compose E=Ven Message",`
+          <div class="field"><label>From</label><select id="composeFrom"><option>${esc(state.profile.address)}</option><option>333 Identity · ${esc(state.profile.number333)}</option></select></div>
+          <div class="field"><label>To</label><input id="composeTo" value="${esc(options.to||draft?.to?.join(", ")||"")}" placeholder="name@vervenveda.com"></div>
+          <div class="field"><label>Subject</label><input id="composeSubject" value="${esc(options.subject||draft?.subject||"")}"></div>
+          <div class="field"><label>Message</label><textarea id="composeBody">${esc(options.body||draft?.body?.join("\n\n")||"")}</textarea></div>
+          <div class="compose-tools">
+            <button type="button" data-compose-tool="attach">📎 Attach</button>
+            <button type="button" data-compose-tool="kansee">🎥 KANSEE Room</button>
+            <button type="button" data-compose-tool="hollo">💬 HOLLO Conversation</button>
+            <button type="button" data-compose-tool="calendar">📅 Calendar Invite</button>
+            <button type="button" data-compose-tool="academy">🎓 Academy Item</button>
+            <button type="button" data-compose-tool="art">🎨 Bazaar Artwork</button>
+          </div>
+        `,`
+          <button class="button" id="saveDraftButton" type="button">Save Draft</button>
+          <button class="button primary" id="sendMessageButton" type="button">Send Message</button>
+        `);
+
+        $("#saveDraftButton").onclick=()=>saveDraft(draft?.id);
+        $("#sendMessageButton").onclick=sendMessage;
+        $$("[data-compose-tool]").forEach(button=>{
+          button.onclick=()=>showToast(button.textContent.trim()+" integration is prepared for the backend.");
+        });
+      }
+
+      function composeValues(){
+        return {
+          to:$("#composeTo").value.trim(),
+          subject:$("#composeSubject").value.trim(),
+          body:$("#composeBody").value.trim()
+        };
+      }
+
+      function saveDraft(existingId=null){
+        const values=composeValues();
+        let draft=existingId?state.messages.find(message=>message.id===existingId):null;
+        if(!draft){
+          draft={
+            id:"m-"+crypto.randomUUID(),
+            folder:"drafts",
+            unread:false,
+            starred:false,
+            from:{name:state.profile.name,address:state.profile.address},
+            to:[values.to],
+            subject:values.subject,
+            preview:values.body.slice(0,100),
+            body:[values.body],
+            createdAt:Date.now(),
+            attachments:[]
+          };
+          state.messages.push(draft);
+        }else{
+          draft.to=[values.to];
+          draft.subject=values.subject;
+          draft.preview=values.body.slice(0,100);
+          draft.body=[values.body];
+          draft.createdAt=Date.now();
+        }
+        saveState();
+        closeModal();
+        renderList();
+        showToast("Draft saved locally.");
+      }
+
+      async function sendMessage(){
+        const values=composeValues();
+        if(!values.to)return showToast("Add a recipient.");
+        if(EVEN_MAIL_BACKEND.mode!=="remote"){
+          state.messages.push({
+            id:"m-"+crypto.randomUUID(),
+            folder:"sent",
+            unread:false,
+            starred:false,
+            from:{name:state.profile.name,address:state.profile.address},
+            to:[values.to],
+            subject:values.subject||"(No subject)",
+            preview:values.body.slice(0,100),
+            body:[values.body],
+            createdAt:Date.now(),
+            attachments:[]
+          });
+          saveState();
+          closeModal();
+          renderList();
+          showToast("Saved to Sent locally. External delivery is not active yet.");
+          return;
+        }
+        await EvenMailService.submitMessage(values);
+      }
+
+      function openSettings(){
+        modal("E=Ven Mail Settings",`
+          <div class="form-row">
+            <div class="field"><label>Display name</label><input id="settingsName" value="${esc(state.profile.name)}"></div>
+            <div class="field"><label>Primary address</label><input id="settingsAddress" value="${esc(state.profile.address)}"></div>
+          </div>
+          <div class="field"><label>333 identity</label><input id="settings333" value="${esc(state.profile.number333)}"></div>
+          <div class="field"><label>Backend mode</label><select disabled><option>Local development mode</option></select></div>
+          <blockquote style="margin:0;padding:14px;border-left:3px solid var(--gold);background:#f7f2e8">
+            Production mail credentials, DNS secrets, DKIM private keys, database passwords, and administrator tokens must never be stored in this public HTML file.
+          </blockquote>
+        `,`<button class="button primary" id="saveSettingsButton">Save Settings</button>`);
+        $("#saveSettingsButton").onclick=()=>{
+          state.profile.name=$("#settingsName").value.trim()||state.profile.name;
+          state.profile.address=$("#settingsAddress").value.trim()||state.profile.address;
+          state.profile.number333=$("#settings333").value.trim()||state.profile.number333;
+          saveState();closeModal();renderList();showToast("Settings saved locally.");
+        };
+      }
+
+      function handleFolder(folder){
+        state.activeFolder=folder;
+        state.selectedMessageId=null;
+        saveState();
+        renderList();
+        $("#readerContent").hidden=true;
+        $("#readerEmpty").hidden=false;
+        closeReader();
+      }
+
+      $("#composeButton").addEventListener("click",()=>openCompose());
+      $("#modalClose").addEventListener("click",closeModal);
+      $("#modalLayer").addEventListener("click",event=>{if(event.target===$("#modalLayer"))closeModal()});
+      $("#settingsButton").addEventListener("click",openSettings);
+      $("#profileButton").addEventListener("click",openSettings);
+      $("#sidebarToggle").addEventListener("click",()=>$("#sidebar").classList.toggle("open"));
+      $("#mailSearch").addEventListener("input",renderList);
+      $("#refreshList").addEventListener("click",()=>{renderList();showToast("Local mailbox refreshed.")});
+      $("#syncButton").addEventListener("click",()=>showToast("E=Ven backend synchronization is not connected yet."));
+
+      $$(".folder-button[data-folder]").forEach(button=>{
+        button.addEventListener("click",()=>handleFolder(button.dataset.folder));
+      });
+
+      $("#mailList").addEventListener("click",event=>{
+        const star=event.target.closest("[data-star-id]");
+        if(star){
+          event.stopPropagation();
+          const message=state.messages.find(item=>item.id===star.dataset.starId);
+          if(message){message.starred=!message.starred;saveState();renderList()}
+          return;
+        }
+        const row=event.target.closest("[data-message-id]");
+        if(row)openMessage(row.dataset.messageId);
+      });
+
+      $("#reader").addEventListener("click",event=>{
+        const readerAction=event.target.closest("[data-reader-action]");
+        if(readerAction&&state.selectedMessageId){
+          const message=state.messages.find(item=>item.id===state.selectedMessageId);
+          if(!message)return;
+          if(readerAction.dataset.readerAction==="archive"){message.folder="archive";saveState();handleFolder("inbox");showToast("Message archived.")}
+          if(readerAction.dataset.readerAction==="delete"){message.folder="trash";saveState();handleFolder("inbox");showToast("Message moved to Trash.")}
+          return;
+        }
+
+        const reply=event.target.closest("[data-reply]");
+        if(reply&&state.selectedMessageId){
+          const message=state.messages.find(item=>item.id===state.selectedMessageId);
+          if(!message)return;
+          if(reply.dataset.reply==="reply"){
+            openCompose({to:message.from.address,subject:"Re: "+message.subject,body:"\n\n--- Original message ---\n"+message.body.join("\n\n")});
+          }else if(reply.dataset.reply==="forward"){
+            openCompose({subject:"Fwd: "+message.subject,body:"\n\n--- Forwarded message ---\n"+message.body.join("\n\n")});
+          }else{
+            showToast(reply.dataset.reply==="kansee"?"KANSEE invitation integration is prepared.":"HOLLO continuation integration is prepared.");
+          }
+        }
+
+        const attachment=event.target.closest("[data-attachment]");
+        if(attachment)showToast(attachment.dataset.attachment+" is a demonstration attachment.");
+      });
+
+      document.addEventListener("keydown",event=>{
+        if(event.key==="Escape"){
+          closeModal();
+          closeReader();
+          $("#sidebar").classList.remove("open");
+        }
+      });
+
+      renderList();
+    })();
+  </script>
+</body>
+</html>
