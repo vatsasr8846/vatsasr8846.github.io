@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="color-scheme" content="light">
-  <meta name="description" content="HOLLO™ — a local-first 333 Network workspace for trusted contacts, private messages, consent-based invitations, and voice or video preview.">
+  <meta name="description" content="HOLLO™ 333 Direct Connect — a local-first, backend-ready workspace for trusted contacts, private messages, consent-based invitations, and voice or video preview.">
   <meta name="theme-color" content="#111426">
   <meta http-equiv="Content-Security-Policy" content="default-src 'self' data: blob:; img-src 'self' data: blob:; media-src 'self' data: blob:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; script-src 'unsafe-inline'; connect-src 'self' ws: wss:; object-src 'none'; frame-src 'none'; base-uri 'none'; form-action 'none'">
   <title>HOLLO™ — 333 Direct Connect</title>
@@ -1009,6 +1009,198 @@
       .conversation-panel .panel-body{min-height:560px}
     }
 
+  
+    /* =========================================================
+       HOLLO 333 — professional centered refinement
+       ========================================================= */
+    :root{
+      --r1:7px;
+      --r2:7px;
+      --r3:21px;
+    }
+
+    body{
+      text-align:center;
+      font-weight:400;
+    }
+
+    .hero{
+      max-width:1221px;
+      grid-template-columns:1fr;
+      justify-items:center;
+      text-align:center;
+      padding:44px 22px 28px;
+    }
+
+    .hero > div:first-child{
+      max-width:880px;
+    }
+
+    .hero-copy{
+      margin-left:auto;
+      margin-right:auto;
+    }
+
+    .service-number{
+      width:min(100%,333px);
+      margin:auto;
+      border-radius:21px;
+    }
+
+    .topline-inner,
+    .status-strip,
+    .backend-readiness,
+    .mobile-tabs,
+    .app-shell,
+    .activity-drawer{
+      max-width:1221px;
+    }
+
+    .network-links a,
+    .small-btn,.primary-btn,.danger-btn,.quiet-btn,.icon-btn,
+    input,textarea,select,
+    .contact-card,.dialer,.call-status,
+    .invite-item,.activity-item,
+    .modal,.modal-head,.privacy-note,
+    .toast{
+      border-radius:7px;
+    }
+
+    .panel,.activity-card{
+      border-radius:21px;
+    }
+
+    .panel-head,
+    .conversation-header,
+    .composer{
+      text-align:left;
+    }
+
+    .panel-head h2,
+    .panel-head p{
+      text-align:left;
+    }
+
+    .app-shell{
+      grid-template-columns:275px minmax(420px,1fr) 350px;
+    }
+
+    .status-card{
+      justify-content:center;
+      text-align:center;
+      gap:14px 22px;
+    }
+
+    .status-actions{
+      justify-content:center;
+    }
+
+    .backend-readiness{
+      margin:0 auto 16px;
+      padding:0 22px;
+    }
+
+    .backend-readiness-inner{
+      display:grid;
+      grid-template-columns:minmax(0,1.25fr) minmax(320px,.75fr);
+      gap:22px;
+      align-items:center;
+      padding:22px;
+      border:1px solid var(--line);
+      border-radius:21px;
+      background:rgba(255,255,255,.76);
+      box-shadow:var(--shadow);
+      backdrop-filter:blur(12px);
+    }
+
+    .backend-readiness-inner > div:first-child{
+      text-align:left;
+    }
+
+    .backend-kicker{
+      margin:0 0 7px;
+      color:var(--violet);
+      font-family:var(--font-brand);
+      font-size:10px;
+      font-weight:600;
+      letter-spacing:.18em;
+      text-transform:uppercase;
+    }
+
+    .backend-readiness h2{
+      margin:0;
+      font-size:clamp(24px,3vw,36px);
+      line-height:1.05;
+    }
+
+    .backend-readiness p:not(.backend-kicker){
+      margin:11px 0 0;
+      color:var(--muted);
+      font-size:12px;
+      line-height:1.7;
+    }
+
+    .backend-status-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:7px;
+    }
+
+    .backend-status-grid div{
+      min-height:88px;
+      display:grid;
+      align-content:center;
+      padding:12px;
+      border:1px solid var(--line);
+      border-radius:7px;
+      background:#fffdf8;
+    }
+
+    .backend-status-grid strong{
+      color:var(--violet);
+      font-family:var(--font-brand);
+      font-size:10px;
+      letter-spacing:.08em;
+      text-transform:uppercase;
+    }
+
+    .backend-status-grid span{
+      margin-top:5px;
+      color:var(--ink-soft);
+      font-size:10px;
+      line-height:1.4;
+    }
+
+    footer{
+      max-width:1000px;
+      margin:auto;
+    }
+
+    @media (max-width:1180px){
+      .app-shell{
+        grid-template-columns:270px minmax(380px,1fr);
+      }
+    }
+
+    @media (max-width:900px){
+      .backend-readiness-inner{
+        grid-template-columns:1fr;
+      }
+      .backend-readiness-inner > div:first-child{
+        text-align:center;
+      }
+    }
+
+    @media (max-width:560px){
+      .backend-readiness{
+        padding-left:12px;
+        padding-right:12px;
+      }
+      .backend-status-grid{
+        grid-template-columns:1fr;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -1016,13 +1208,14 @@
     <div class="topline-inner">
       <nav class="crumbs" aria-label="Breadcrumb">
         <a href="https://vervenveda.github.io/">Verve N Veda</a><span aria-hidden="true">›</span>
-        <a href="https://vervenveda.github.io/proresource_hub.github.io/">ProReSources</a><span aria-hidden="true">›</span>
-        <a href="333_network/333_Network_index.html">333 Network</a><span aria-hidden="true">›</span>
+        <a href="https://vervenveda.github.io/333.github.io/">333 Network</a><span aria-hidden="true">›</span>
         <span>HOLLO</span>
       </nav>
       <div class="network-links" aria-label="333 Network services">
-        <a href="KANSEE™ 333 Meeting Rooms_index.html">KANSEE Meeting Rooms</a>
-        <a href="Bazaar Art Live 333 Social Feedindex.html">Bazaar Art Live</a>
+        <a href="https://vervenveda.github.io/333.github.io/">333 Network Home</a>
+        <a href="https://vervenveda.github.io/proresource_hub.github.io/Protools/KANSEE%E2%84%A2%20333%20Meeting%20Rooms_index.html">KANSEE Meeting Rooms</a>
+        <a href="https://vervenveda.github.io/proresource_hub.github.io/Protools/Bazaar%20Art%20Live%20333%20Social%20Feed_index.html">Bazaar Art Live</a>
+        <a href="https://vervenveda.github.io/proresource_hub.github.io/">ProResource Hub</a>
       </div>
     </div>
   </div>
@@ -1031,7 +1224,7 @@
     <div>
       <p class="eyebrow">333 Network · Direct Communication</p>
       <h1>HOLLO™</h1>
-      <p class="hero-copy">A calm private workspace for trusted contacts, local messages, and consent-based voice or video invitations. Every connection begins by choice.</p>
+      <p class="hero-copy">A private, consent-based workspace for trusted contacts, direct messages, and voice or video invitations. Every connection begins by choice.</p>
     </div>
     <div class="service-number" aria-label="HOLLO service number">
       <small>Internal HOLLO Route</small>
@@ -1042,13 +1235,36 @@
 
   <div class="status-strip">
     <div class="status-card">
-      <div><span class="status-dot"></span><strong>Local preview mode:</strong> contacts, messages, invitations, call history, and camera or microphone previews work on this device. Cross-device delivery will require the connected HOLLO service.</div>
+      <div><span class="status-dot"></span><strong>Local-first mode:</strong> contacts, messages, invitations, activity, profiles, and media previews persist on this device. Secure accounts, synchronization, and cross-device delivery activate only when the HOLLO backend is connected.</div>
       <div class="status-actions">
         <button class="small-btn" id="profileBtn" type="button">My Profile</button>
         <button class="small-btn" id="settingsBtn" type="button">Settings & Backup</button>
       </div>
     </div>
   </div>
+
+
+  <section class="backend-readiness" aria-labelledby="backendReadinessTitle">
+    <div class="backend-readiness-inner">
+      <div>
+        <p class="backend-kicker">Persistence Architecture</p>
+        <h2 id="backendReadinessTitle">Local today. Backend-ready for secure synchronization.</h2>
+        <p>
+          HOLLO currently stores the member profile, trusted contacts, private message threads,
+          invitations, and activity in this browser. The application includes a documented
+          service-adapter boundary so authenticated accounts, encrypted server storage,
+          WebSocket signaling, and cross-device synchronization can be added without replacing
+          the current interface.
+        </p>
+      </div>
+      <div class="backend-status-grid" aria-label="HOLLO persistence status">
+        <div><strong>Active</strong><span>Browser persistence</span></div>
+        <div><strong>Active</strong><span>JSON backup and restore</span></div>
+        <div><strong>Planned</strong><span>Authenticated cloud sync</span></div>
+        <div><strong>Planned</strong><span>Real-time signaling</span></div>
+      </div>
+    </div>
+  </section>
 
   <nav class="mobile-tabs" aria-label="HOLLO mobile views">
     <button class="small-btn active" type="button" data-mobile-view="contacts">Contacts</button>
@@ -1110,7 +1326,7 @@
             <button class="primary-btn" type="submit">Save Locally</button>
             <button class="quiet-btn" type="button" id="clearThreadBtn">Clear</button>
           </div>
-          <p class="delivery-note">Saved locally in this browser. Cross-device delivery is not active yet.</p>
+          <p class="delivery-note">Saved locally and retained on this device. Cross-device delivery remains inactive until secure synchronization is connected.</p>
         </form>
       </div>
     </section>
@@ -1178,7 +1394,7 @@
   </section>
 
   <footer>
-    <strong>HOLLO™ · 333 Direct Connect at ProReSources</strong><br>
+    <strong>HOLLO™ · 333 Direct Connect</strong><br>
     Verve N Veda · Khaemenes Academy · Jennifer Kay Pearl · All Rights Reserved 2026<br>
     Local data remains in this browser unless you deliberately export it. Cross-device delivery and calling require connected HOLLO services.
   </footer>
@@ -1309,7 +1525,56 @@
   (()=>{
     'use strict';
 
-    const APP_VERSION = '1.0.0';
+
+    /*
+      HOLLO BACKEND INTEGRATION BOUNDARY
+      ----------------------------------
+      The current public build intentionally runs in local-first mode.
+
+      Production persistence should add:
+      1. Authentication with verified member IDs.
+      2. A database with row-level access controls.
+      3. Encrypted transport over HTTPS/WSS.
+      4. WebSocket or equivalent signaling for invitations and call setup.
+      5. Server-issued 333 identities.
+      6. Sync conflict handling using updatedAt/version fields.
+      7. Separate object storage for optional attachments.
+      8. Audit, abuse-reporting, blocking, and rate-limiting controls.
+
+      Set mode to "remote" only after the API endpoints below exist.
+    */
+    const HOLLO_BACKEND = Object.freeze({
+      mode: 'local',
+      apiBase: '',
+      websocketUrl: '',
+      authProvider: '',
+      syncEnabled: false
+    });
+
+    const HolloService = Object.freeze({
+      async getSession(){
+        if(HOLLO_BACKEND.mode !== 'remote') return null;
+        throw new Error('Remote authentication is not configured.');
+      },
+      async pullWorkspace(){
+        if(HOLLO_BACKEND.mode !== 'remote') return null;
+        throw new Error('Remote synchronization is not configured.');
+      },
+      async pushWorkspace(_workspace){
+        if(HOLLO_BACKEND.mode !== 'remote') return {ok:false, reason:'local-mode'};
+        throw new Error('Remote synchronization is not configured.');
+      },
+      async sendMessage(_message){
+        if(HOLLO_BACKEND.mode !== 'remote') return {ok:false, reason:'local-mode'};
+        throw new Error('Remote message delivery is not configured.');
+      },
+      async sendInvitation(_invitation){
+        if(HOLLO_BACKEND.mode !== 'remote') return {ok:false, reason:'local-mode'};
+        throw new Error('Remote invitation signaling is not configured.');
+      }
+    });
+
+    const APP_VERSION = '1.1.0';
     const STORAGE_KEY = 'hollo_333_direct_connect_v1';
     const MAX_MESSAGES_PER_THREAD = 500;
     const MAX_ACTIVITY = 200;
@@ -1319,8 +1584,8 @@
     const knownRoutes = {
       '3331117777': {type:'contact', contactId:'founder'},
       '3332227777': {type:'service', label:'HOLLO Direct Connect'},
-      '3333337777': {type:'link', label:'KANSEE Meetings', href:'KANSEE™ 333 Meeting Rooms_index.html'},
-      '3334447777': {type:'link', label:'Live Social Feed', href:'Bazaar Art Live 333 Social Feedindex.html'}
+      '3333337777': {type:'link', label:'KANSEE Meetings', href:'https://vervenveda.github.io/proresource_hub.github.io/Protools/KANSEE%E2%84%A2%20333%20Meeting%20Rooms_index.html'},
+      '3334447777': {type:'link', label:'Live Social Feed', href:'https://vervenveda.github.io/proresource_hub.github.io/Protools/Bazaar%20Art%20Live%20333%20Social%20Feed_index.html'}
     };
 
     const defaultState = ()=>({
@@ -1349,7 +1614,8 @@
       },
       invites:{incoming:[],outgoing:[]},
       activity:[],
-      settings:{inviteTab:'incoming'}
+      settings:{inviteTab:'incoming'},
+      sync:{mode:'local',lastSyncedAt:null,revision:1}
     });
 
     let memoryState = null;
@@ -1438,6 +1704,7 @@
       }
       out.activity=Array.isArray(input.activity)?input.activity.slice(-MAX_ACTIVITY):[];
       out.settings={...base.settings,...(input.settings||{})};
+      out.sync={...base.sync,...(input.sync||{}),mode:HOLLO_BACKEND.mode};
       out.activeContactId=out.contacts.some(c=>c.id===input.activeContactId)?input.activeContactId:'founder';
       out.version=APP_VERSION;
       return out;
@@ -1445,6 +1712,9 @@
 
     function saveState(){
       state.version=APP_VERSION;
+      state.sync=state.sync||{mode:HOLLO_BACKEND.mode,lastSyncedAt:null,revision:0};
+      state.sync.mode=HOLLO_BACKEND.mode;
+      state.sync.revision=(Number(state.sync.revision)||0)+1;
       state.schema='hollo-backup';
       memoryState=clone(state);
       if(!storageAvailable) return false;
@@ -1621,7 +1891,7 @@
     function updateStorageSummary(){
       const el=$('#storageSummary'); if(!el) return;
       const bytes=new Blob([JSON.stringify(state)]).size;
-      el.textContent='Local workspace: '+(bytes/1024).toFixed(1)+' KB · '+state.contacts.length+' contacts · '+Object.values(state.threads).reduce((n,v)=>n+(Array.isArray(v)?v.length:0),0)+' messages · storage '+(storageAvailable?'available':'temporary session memory');
+      el.textContent='Local workspace: '+(bytes/1024).toFixed(1)+' KB · '+state.contacts.length+' contacts · '+Object.values(state.threads).reduce((n,v)=>n+(Array.isArray(v)?v.length:0),0)+' messages · storage '+(storageAvailable?'available':'temporary session memory')+' · sync '+HOLLO_BACKEND.mode;
     }
 
     function updateCallContact(){
